@@ -1,5 +1,3 @@
-import { contextBridge } from 'electron';
+const { contextBridge } = require("electron");
 
-contextBridge.exposeInMainWorld('spriteSheetMaker', {
-    
-});
+contextBridge.exposeInMainWorld("spriteSheetMaker", {});

@@ -7,7 +7,7 @@
     "electron",
     "desktop"
   ],
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "author": "nappa9693",
   "type": "commonjs",
   "main": "main.js",
