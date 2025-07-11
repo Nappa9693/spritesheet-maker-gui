@@ -11,28 +11,35 @@
       content="default-src 'self'; script-src 'self'"
     />
     <title>Spritesheet Maker</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
     <div class="user-input">
-        <label for="sourceDirectory">Source Images Directory:</label>
-        <input id="sourceDirectory" type="file" webkitdirectory />
-        <i class="fa-solid fa-folder-open"></i>
+      <label for="sourceDirectory">Source Images Directory:</label>
+      <div class="folder-selector">
+        <input id="sourceDirectory" type="text" />
+        <button id="sourceDialogButton">Choose Directory</button>
+      </div>
     </div>
     <div class="user-input">
-        <label for="destinationDirectory">Destination Directory:</label>
-        <input id="destinationDirectory" type="file" webkitdirectory />
+      <label for="destinationDirectory">Output Directory:</label>
+      <div class="folder-selector">
+        <input id="destinationDirectory" type="text" />
+        <button id="destinationDialogButton">Choose Directory</button>
+      </div>
     </div>
     <div class="user-input">
-        <label for="fileName">Spritesheet File Name:</label>
-        <input id="fileName" type="text" value="" />
+      <label for="fileName">Spritesheet File Name:</label>
+      <input id="fileName" type="text" value="" />
     </div>
     <div class="user-input">
-        <label for="columnCount">Spritesheet Column Count</label>
-        <input id="columnCount" type="number" value="" />
+      <label for="columnCount">Spritesheet Column Count</label>
+      <input id="columnCount" type="number" value="" />
     </div>
     <div>
-        <button id="createSpriteSheetButton">Create Spritesheet</button>
+      <button id="createSpriteSheetButton" class="submit-button">
+        Create Spritesheet
+      </button>
     </div>
     <script src="./renderer.js"></script>
   </body>

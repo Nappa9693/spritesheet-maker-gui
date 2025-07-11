@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("createSpriteSheetButton")
     .addEventListener("click", createSpriteSheet);
+  document
+    .getElementById("sourceDialogButton")
+    .addEventListener("click", async () => {
+      await displayOpenFolderDialog("sourceDirectory");
+    });
+  document
+    .getElementById("destinationDialogButton")
+    .addEventListener("click", async () => {
+      await displayOpenFolderDialog("destinationDirectory");
+    });
 });
 
 function createSpriteSheet() {
@@ -14,13 +24,28 @@ function createSpriteSheet() {
     const columnCount = parseInt(document.getElementById("columnCount").value);
 
     // TODO: Add validation.
+    console.log(sourceDirectory);
 
-    alert(`Source Directory: ${sourceDirectory}\n
-                Destination Directory: ${destinationDirectory}\n
-                File Name: ${fileName}\n
-                Column Count: ${columnCount}`);
+    window.spriteSheetMaker.createSpriteSheet(
+      sourceDirectory,
+      `${destinationDirectory}/${fileName}`,
+      columnCount,
+    );
+    window.spriteSheetMaker.onCreateSpriteSheetMessage(
+      onCreateSpriteSheetMessage,
+    );
   } catch (ex) {
     // TODO: Display message modal.
     console.log(ex);
   }
+}
+
+function onCreateSpriteSheetMessage(message) {
+  // TODO: Set message in message modal.
+  console.log(message);
+}
+
+async function displayOpenFolderDialog(inputId) {
+  const folderPath = await window.electronAPI.openFolder();
+  document.getElementById(inputId).value = folderPath;
 }
