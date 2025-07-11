@@ -12,6 +12,10 @@ contextBridge.exposeInMainWorld("spriteSheetMaker", {
     ipcRenderer.on("create-spritesheet-message", (_event, value) =>
       callback(value),
     ),
+  onCreateSpriteSheetErrorMessage: (callback) =>
+    ipcRenderer.on("create-spritesheet-error-message", (_event, value) =>
+      callback(value),
+    ),
 });
 
 contextBridge.exposeInMainWorld("electronAPI", {

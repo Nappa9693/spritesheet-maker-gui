@@ -102,6 +102,6 @@ exports.createSpriteSheet = async (
       `Spritesheet ${destination} has been created.`,
     );
   } catch (err) {
-    webContents.send("create-spritesheet-message", `Error: ${err}`);
+    webContents.send("create-spritesheet-error-message", err);
   }
 };

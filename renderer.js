@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.spriteSheetMaker.onCreateSpriteSheetMessage(
     onCreateSpriteSheetMessage,
   );
+
+  window.spriteSheetMaker.onCreateSpriteSheetErrorMessage(
+    onCreateSpriteSheetErrorMessage,
+  );
 });
 
 let processingSpriteSheetRequest = false;
@@ -55,7 +59,11 @@ async function createSpriteSheet() {
 }
 
 function onCreateSpriteSheetMessage(message) {
-  addMessageToMessageModal(message);
+  addMessageToMessageModal(message, false);
+}
+
+function onCreateSpriteSheetErrorMessage(message) {
+  addMessageToMessageModal(message, true);
 }
 
 async function displayOpenFolderDialog(inputId) {
@@ -74,9 +82,13 @@ function hideMessageModal() {
   resetMessageModal();
 }
 
-function addMessageToMessageModal(message) {
+function addMessageToMessageModal(message, isError) {
   const messageModal = document.getElementById("messageModal");
   const paragraphElement = document.createElement("p");
+
+  if (isError) {
+    paragraphElement.classList.add("error-message");
+  }
 
   paragraphElement.innerText = message;
   messageModal.appendChild(paragraphElement);
