@@ -1,6 +1,6 @@
-const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
-const path = require("path");
-const { createSpriteSheet } = require("./spritesheet.js");
+import { app, BrowserWindow, Menu, ipcMain, dialog } from "electron";
+import path from "path";
+import { createSpriteSheet } from "./spritesheet.js";
 
 async function handleDirectoryOpen() {
   const { canceled, filePaths } = await dialog.showOpenDialog({
@@ -15,13 +15,19 @@ async function handleDirectoryOpen() {
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 500,
-    height: 400,
+    height: 425,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
-  win.loadFile("index.html");
+  //win.loadFile("index.html");
+  // and load the index.html of the app.
+    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+      win.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    } else {
+      win.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
+    }
 
   return win;
 };

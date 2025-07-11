@@ -1,7 +1,7 @@
-const fs = require("node:fs");
-const { Jimp } = require("jimp");
+import fs from "node:fs";
+import { Jimp } from "jimp";
 
-exports.createSpriteSheet = async (
+export const createSpriteSheet = async (
   webContents,
   srcDirectory,
   destination,

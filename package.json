@@ -9,11 +9,9 @@
   ],
   "license": "GPL-3.0-only",
   "author": "nappa9693",
-  "type": "commonjs",
-  "main": "main.js",
+  "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier . --write",
     "package": "electron-forge package",
     "make": "electron-forge make"
@@ -26,9 +24,11 @@
     "@electron-forge/maker-zip": "^7.8.1",
     "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
     "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron-forge/plugin-vite": "^7.8.1",
     "@electron/fuses": "^1.8.0",
     "electron": "^37.2.1",
-    "jimp": "^1.6.0"
+    "jimp": "^1.6.0",
+    "vite": "^7.0.4"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
