@@ -1,0 +1,25 @@
+{
+  "name": "spritesheet-maker-gui",
+  "version": "1.0.0",
+  "description": "GUI application for creating a spritesheet by combining images.",
+  "keywords": [
+    "spritesheet",
+    "electron",
+    "desktop"
+  ],
+  "license": "ISC",
+  "author": "nappa9693",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier . --write"
+  },
+  "devDependencies": {
+    "electron": "^37.2.1"
+  },
+  "dependencies": {
+    "prettier": "^3.6.2"
+  }
+}
