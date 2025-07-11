@@ -11,28 +11,28 @@
       content="default-src 'self'; script-src 'self'"
     />
     <title>Spritesheet Maker</title>
+    <link rel="stylesheet" href="./index.css">
   </head>
   <body>
-    <div class="content">
-      <div class="user-input">
+    <div class="user-input">
         <label for="sourceDirectory">Source Images Directory:</label>
         <input id="sourceDirectory" type="file" webkitdirectory />
-      </div>
-      <div class="user-input">
+        <i class="fa-solid fa-folder-open"></i>
+    </div>
+    <div class="user-input">
         <label for="destinationDirectory">Destination Directory:</label>
         <input id="destinationDirectory" type="file" webkitdirectory />
-      </div>
-      <div class="user-input">
+    </div>
+    <div class="user-input">
         <label for="fileName">Spritesheet File Name:</label>
         <input id="fileName" type="text" value="" />
-      </div>
-      <div class="user-input">
+    </div>
+    <div class="user-input">
         <label for="columnCount">Spritesheet Column Count</label>
         <input id="columnCount" type="number" value="" />
-      </div>
-      <div>
+    </div>
+    <div>
         <button id="createSpriteSheetButton">Create Spritesheet</button>
-      </div>
     </div>
     <script src="./renderer.js"></script>
   </body>

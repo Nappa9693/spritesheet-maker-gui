@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #151e33;
+}
+
+.user-input {
+    /* 
+        #20345e input
+        #7893cc text
+    */
+    display: inline-flex;
+    flex-direction: column;
+    width: 400px;
+    color: #7893cc;
+    margin-top: 15px;
+}
+
+.user-input label {
+    font-size: 1.2em;
+}
+
+.user-input input {
+    background-color: #20345e;
+    color: #7893cc;
+    border-radius: 5px;
+    border-width: 1;
+    border-color: black;
+    border-style: solid;
+    height: 30px;
+    font-size: 1.2em;
+}
+
+.user-input input::file-selector-button {
+    background-color: #7893cc;
+    color: #20345e;
+    border-radius: 5px;
+    border-width: 0;
+    width: 120px;
+    height: 100%;
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    /*
+    #110724
+     #20345e;
+    */
+    margin-top: 30px;
+    height: 30px;
+    width: 350px;
+    color: #7893cc;
+    border-radius: 5px;
+    border-width: 1;
+    border-color: black;
+    border-style: solid;
+    background: #20345E;
+background: linear-gradient(170deg, rgba(32, 52, 94, 1) 15%, rgba(49, 40, 105, 1) 33%, rgba(17, 7, 36, 1) 68%);
+}
