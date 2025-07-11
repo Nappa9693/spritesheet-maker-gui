@@ -27,7 +27,7 @@ const createWindow = () => {
 };
 
 // Comment this line out if we need developer tools.
-Menu.setApplicationMenu(null);
+//Menu.setApplicationMenu(null);
 
 app.whenReady().then(() => {
   const mainWindow = createWindow();

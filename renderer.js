@@ -36,7 +36,10 @@ async function createSpriteSheet() {
     const fileName = document.getElementById("fileName").value;
     const columnCount = parseInt(document.getElementById("columnCount").value);
 
-    // TODO: Add validation.
+    if (!isInputValid()) {
+      processingSpriteSheetRequest = false;
+      return;
+    }
 
     showMessageModal();
     await window.spriteSheetMaker.createSpriteSheet(
@@ -57,7 +60,9 @@ function onCreateSpriteSheetMessage(message) {
 
 async function displayOpenFolderDialog(inputId) {
   const folderPath = await window.electronAPI.openFolder();
-  document.getElementById(inputId).value = folderPath;
+  if (folderPath !== undefined && folderPath !== null) {
+    document.getElementById(inputId).value = folderPath;
+  }
 }
 
 function showMessageModal() {
@@ -84,4 +89,50 @@ function resetMessageModal() {
   paragraphElements.forEach((element) => {
     messageModal.removeChild(element);
   });
+}
+
+function isInputValid() {
+  let inputsValid = true;
+
+  const sourceDirectoryElement = document.getElementById("sourceDirectory");
+  const destinationDirectoryElement = document.getElementById(
+    "destinationDirectory",
+  );
+  const fileNameElement = document.getElementById("fileName");
+  const columnCountElement = document.getElementById("columnCount");
+
+  const sourceDirectory = sourceDirectoryElement.value;
+  const destinationDirectory = destinationDirectoryElement.value;
+  const fileName = fileNameElement.value;
+  const columnCount = parseInt(columnCountElement.value);
+
+  if (!(sourceDirectory !== null && sourceDirectory.trim() !== "")) {
+    sourceDirectoryElement.classList.add("error-input");
+    inputsValid = false;
+  } else {
+    sourceDirectoryElement.classList.remove("error-input");
+  }
+
+  if (!(destinationDirectory !== null && destinationDirectory.trim() !== "")) {
+    destinationDirectoryElement.classList.add("error-input");
+    inputsValid = false;
+  } else {
+    destinationDirectoryElement.classList.remove("error-input");
+  }
+
+  if (!(fileName !== null && fileName.trim() !== "")) {
+    fileNameElement.classList.add("error-input");
+    inputsValid = false;
+  } else {
+    fileNameElement.classList.remove("error-input");
+  }
+
+  if (Number.isNaN(columnCount)) {
+    columnCountElement.classList.add("error-input");
+    inputsValid = false;
+  } else {
+    columnCountElement.classList.remove("error-input");
+  }
+
+  return inputsValid;
 }
