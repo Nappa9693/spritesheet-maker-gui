@@ -2,7 +2,10 @@ This was a small learning project to pick up Electron, Electron Forge, and Vite.
 
 ## To Run and create the distributable
 
-Download the source code and run the following commands while in the root directory with your terminal/CLI.
+First you will need to install [NodeJS](https://nodejs.org/en) in order to be able to run the commands below.
+Note: This was developed using the NodeJS LTS version v22.14.0.
+
+Next, download the source code and run the following commands while in the root directory with your terminal/CLI.
 
 ```
 npm install
