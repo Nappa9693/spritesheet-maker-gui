@@ -1,3 +1,9 @@
+const SRC_DIR_ID = "sourceDirectory";
+const DST_DIR_ID = "destinationDirectory";
+const FILE_NAME_ID = "fileName";
+const FILE_EXT_ID = "fileExtension";
+const COL_COUNT_ID = "columnCount";
+
 document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("createSpriteSheetButton")
@@ -33,12 +39,6 @@ async function createSpriteSheet() {
   }
   try {
     processingSpriteSheetRequest = true;
-    const sourceDirectory = document.getElementById("sourceDirectory").value;
-    const destinationDirectory = document.getElementById(
-      "destinationDirectory",
-    ).value;
-    const fileName = document.getElementById("fileName").value;
-    const columnCount = parseInt(document.getElementById("columnCount").value);
 
     if (!isInputValid()) {
       processingSpriteSheetRequest = false;
@@ -47,9 +47,9 @@ async function createSpriteSheet() {
 
     showMessageModal();
     await window.spriteSheetMaker.createSpriteSheet(
-      sourceDirectory,
-      `${destinationDirectory}/${fileName}`,
-      columnCount,
+      getSourceDirectory(),
+      `${getDestinationDirectory()}/${getFileNameWithExtension()}`,
+      getColumnCount(),
     );
   } catch (ex) {
     addMessageToMessageModal(ex);
@@ -106,45 +106,68 @@ function resetMessageModal() {
 function isInputValid() {
   let inputsValid = true;
 
-  const sourceDirectoryElement = document.getElementById("sourceDirectory");
-  const destinationDirectoryElement = document.getElementById(
-    "destinationDirectory",
-  );
-  const fileNameElement = document.getElementById("fileName");
-  const columnCountElement = document.getElementById("columnCount");
+  const sourceDirectory = getSourceDirectory();
+  const destinationDirectory = getDestinationDirectory();
+  const fileName = getFileName();
+  const columnCount = getColumnCount();
 
-  const sourceDirectory = sourceDirectoryElement.value;
-  const destinationDirectory = destinationDirectoryElement.value;
-  const fileName = fileNameElement.value;
-  const columnCount = parseInt(columnCountElement.value);
-
-  if (!(sourceDirectory !== null && sourceDirectory.trim() !== "")) {
-    sourceDirectoryElement.classList.add("error-input");
+  if ((sourceDirectory ?? "").trim() === "") {
+    addErrorClass(SRC_DIR_ID);
     inputsValid = false;
   } else {
-    sourceDirectoryElement.classList.remove("error-input");
+    removeErrorClass(SRC_DIR_ID);
   }
 
-  if (!(destinationDirectory !== null && destinationDirectory.trim() !== "")) {
-    destinationDirectoryElement.classList.add("error-input");
+  if ((destinationDirectory ?? "").trim() === "") {
+    addErrorClass(DST_DIR_ID);
     inputsValid = false;
   } else {
-    destinationDirectoryElement.classList.remove("error-input");
+    removeErrorClass(DST_DIR_ID);
   }
 
-  if (!(fileName !== null && fileName.trim() !== "")) {
-    fileNameElement.classList.add("error-input");
+  if ((fileName ?? "").trim() === "") {
+    addErrorClass(FILE_NAME_ID);
     inputsValid = false;
   } else {
-    fileNameElement.classList.remove("error-input");
+    removeErrorClass(FILE_NAME_ID);
   }
 
   if (Number.isNaN(columnCount)) {
-    columnCountElement.classList.add("error-input");
+    addErrorClass(COL_COUNT_ID);
     inputsValid = false;
   } else {
-    columnCountElement.classList.remove("error-input");
+    removeErrorClass(COL_COUNT_ID);
   }
 
   return inputsValid;
+}
+
+function getSourceDirectory() {
+  return document.getElementById(SRC_DIR_ID).value;
+}
+
+function getDestinationDirectory() {
+  return document.getElementById(DST_DIR_ID).value;
+}
+
+function getFileName() {
+  return document.getElementById(FILE_NAME_ID).value;
+}
+
+function getFileNameWithExtension() {
+  return getFileName() + document.getElementById(FILE_EXT_ID).value;
+}
+
+function getColumnCount() {
+  return parseInt(document.getElementById(COL_COUNT_ID).value);
+}
+
+function addErrorClass(elementId) {
+  const element = document.getElementById(elementId);
+  element.classList.add("error-input");
+}
+
+function removeErrorClass(elementId) {
+  const element = document.getElementById(elementId);
+  element.classList.remove("error-input");
 }

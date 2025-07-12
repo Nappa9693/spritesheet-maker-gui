@@ -25,7 +25,7 @@ body {
   background-color: #20345e;
   color: #7893cc;
   border-radius: 5px;
-  border-width: 2px;
+  border-width: 1px;
   border-color: black;
   border-style: solid;
   height: 30px;
@@ -52,7 +52,7 @@ body {
 }
 
 .folder-selector button:hover {
-  border-width: 4px !important;
+  border-width: 2px !important;
   border-color: black !important;
 }
 
@@ -74,7 +74,7 @@ body {
 
 .ui-button:hover {
   border-color: #7893cc !important;
-  border-width: 4px !important;
+  border-width: 2px !important;
 }
 
 .submit-button {
@@ -103,10 +103,27 @@ body {
 }
 
 .error-input {
-  border-width: 4px !important;
+  border-width: 2px !important;
   border-color: red !important;
 }
 
 .error-message {
   color: red !important;
+}
+
+.file-name-extension-input {
+  display: inline-flex;
+  flex-direction: row;
+}
+.file-name-extension-input select {
+  background-color: #7893cc;
+  color: #20345e;
+  border-radius: 5px;
+  border-width: 0;
+  border-style: solid;
+}
+
+.file-name-extension-input select:hover {
+  border-width: 2px !important;
+  border-color: black !important;
 }

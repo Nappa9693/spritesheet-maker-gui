@@ -30,7 +30,14 @@
     </div>
     <div class="user-input">
       <label for="fileName">Spritesheet File Name:</label>
-      <input id="fileName" type="text" value="" />
+      <div class="file-name-extension-input">
+        <input id="fileName" type="text" value="" />
+        <select id="fileExtension">
+          <option selected value=".png">.png</option>
+          <option value=".jpeg">.jpeg</option>
+          <option value=".tiff">.tiff</option>
+        </select>
+      </div>
     </div>
     <div class="user-input">
       <label for="columnCount">Spritesheet Column Count</label>
