@@ -121,6 +121,7 @@ body {
   border-radius: 5px;
   border-width: 0;
   border-style: solid;
+  margin-left: 5px;
 }
 
 .file-name-extension-input select:hover {
