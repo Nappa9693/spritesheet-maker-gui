@@ -1,0 +1,10 @@
+This was a small learning project to pick up Electron, Electron Forge, and Vite. I had fun working on it and may or may not do more on it. That said you can use the application to create a spritesheet from multiple images. For example you export your animation frames from Krita and want to combine them into a spritesheet for usage in a game. With this app you can specify where the images are, where you want the output spritesheet, and a basic columns configuration (the rows are automatically calculated for you by the app based on the number of columns and images).
+
+## To Run and create the distributable
+Download the source code and run the following commands while in the root directory with your terminal/CLI.
+```
+npm install
+npm start
+npm run make
+```
+The start command will run the app so you can test it out. The make command creates the executable which can be found in the out folder.
